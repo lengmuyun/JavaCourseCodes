@@ -1,9 +1,9 @@
 package io.kimmking.kmq.demo;
 
-import io.kimmking.kmq.core.KmqBroker;
-import io.kimmking.kmq.core.KmqConsumer;
-import io.kimmking.kmq.core.KmqMessage;
-import io.kimmking.kmq.core.KmqProducer;
+import io.kimmking.kmq.core.broker.KmqBroker;
+import io.kimmking.kmq.core.consumer.KmqConsumer;
+import io.kimmking.kmq.core.message.KmqMessage;
+import io.kimmking.kmq.core.producer.KmqProducer;
 
 import lombok.SneakyThrows;
 
@@ -16,7 +16,7 @@ public class KmqDemo {
         KmqBroker broker = new KmqBroker();
         broker.createTopic(topic);
 
-        KmqConsumer consumer = broker.createConsumer();
+        KmqConsumer consumer = broker.createConsumer("default_consumer_name");
         consumer.subscribe(topic);
         final boolean[] flag = new boolean[1];
         flag[0] = true;
